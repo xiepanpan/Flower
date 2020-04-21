@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.flower.mapper.UserMapper">
+        <select resultType="map" id="selectUser">
+          select * from user where username=#{username}
+        </select>
+        <insert id="insertUser">
+           insert into user (username,password,phone,address,name,role,head_image)values(#{username},#{password},#{phone},#{address},#{name},#{role},#{head_image})
+        </insert>
+    <update id="updateUser">
+        <if test="head_image != null ">
+            update `user` set head_image = #{head_image},phone=#{phone},address=#{address},`name`=#{name}
+        </if>
+        <if test="head_image == null ">
+            update `user` set phone=#{phone},address=#{address},`name`=#{name}
+        </if>
+        where user_id=#{user_id}
+    </update>
+    <insert id="registerLogin">
+           insert into user (username,password,role)values(#{username},#{password},#{role})
+        </insert>
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.flower.mapper.FlowerMapper">
+        <select resultType="map" id="selectFlower">
+          select a.*,b.name type_name from flower as a,flower_type as b where a.flower_type_id=b.flower_type_id
+        </select>
+        <select resultType="map" id="selectFlowerDiscount">
+           select a.*,b.name type_name from flower as a,flower_type as b where a.discount!=0 and a.flower_type_id=b.flower_type_id
+
+        </select>
+        <select resultType="map" id="selectFlowerHot">
+           select a.*,b.name type_name from flower as a,flower_type as b where a.flower_type_id=b.flower_type_id order by a.sell_times desc
+
+        </select>
+        <select resultType="map" id="selectFlowerById">
+           select a.*,b.name type_name from flower as a,flower_type as b where a.flower_id=#{flower_id} and a.flower_type_id=b.flower_type_id
+        </select>
+        <insert id="collectFlower">
+       insert into collect(user_id,flower_id)values(#{user_id},#{flower_id})
+        </insert>
+        <insert id="buyFlower">
+          insert into buy(user_id,flower_id,status)values(#{user_id},#{flower_id},#{status})
+        </insert>
+            <select id="soldFlower" resultType="map">
+          select d.name type_name, a.name flower_name ,a.price,a.flower_image,b.buy_id ,b.creat_time,b.status,c.`name`,c.phone,c.address,c.head_image from flower as a,buy as b,user as c,flower_type as d where c.user_id=b.user_id and b.flower_id=a.flower_id and b.status=#{status} and a.flower_type_id=d.flower_type_id
+          </select>
+        <update id="sellFlower">
+         update buy set status=#{status} where buy_id=#{buy_id}
+        </update>
+        <select id="selectCollectFlower" resultType="map">
+   select d.name type_name, a.name flower_name ,a.flower_id,a.price,a.flower_image,b.collect_id ,b.creat_date,c.`name`,c.phone,c.address,c.head_image from flower as a,collect as b,user as c ,flower_type as d where c.user_id=b.user_id and b.flower_id=a.flower_id and c.user_id=#{user_id} and a.flower_type_id=d.flower_type_id      </select>
+        <delete id="collectDelete">
+            delete from collect where collect_id=#{collect_id}
+        </delete>
+        <select id="sellTimes" resultType="map">
+            select sell_times,flower_id from flower where flower_id=(select flower_id from buy where buy_id=#{buy_id})
+        </select>
+        <update id="updateSellTimes">
+            update flower set sell_times=#{sell_times} where flower_id=#{flower_id}
+        </update>
+    <insert id="insertFlower">
+        insert into flower(name,price,discount,flower_image,flower_type_id,sell_times)values(#{name},#{price},#{discount},#{flower_image},#{flower_type_id},#{sell_times})
+    </insert>
+    <delete id="deleteFlower">
+        delete from flower where flower_id=#{flower_id}
+    </delete>
+    <select id="FlowerType" resultType="map">
+        select * from flower_type
+    </select>
+        <insert id="insertFlowerType">
+            insert into flower_type(name)values(#{name})
+        </insert>
+    <delete id="deleteFlowerType">
+        delete from flower_type where flower_type_id=#{flower_type_id}
+    </delete>
+    <select id="avgStar" resultType="map">
+        select AVG(star) star from comment where flower_id=#{flower_id}
+    </select>
+    <select id="myOrder" resultType="map">
+        select b.*,c.`name` type_name,a.buy_id,a.status from buy as a,flower as b,flower_type as c where a.flower_id=b.flower_id and b.flower_type_id=c.flower_type_id and a.user_id=#{user_id} and a.status=#{status}
+    </select>
+    <update id="updateFlower">
+        <if test="flower_image != null ">
+            update flower set flower_image = #{flower_image},`name`=#{name},price=#{price},discount=#{discount} where flower_id=#{flower_id}
+        </if>
+        <if test="flower_image == null ">
+            update flower set `name`=#{name},price=#{price},discount=#{discount} where flower_id=#{flower_id}
+        </if>
+    </update>
+</mapper>

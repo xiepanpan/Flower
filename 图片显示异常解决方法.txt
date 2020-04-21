@@ -1,0 +1,3 @@
+如果你没有看到正常的图片，那么有可能在我打包的时候自动消失了，所以你可以将在本目录下的images里面的文件放在target->classes->static下面
+
+sql-> flower.sql
