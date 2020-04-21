@@ -21,14 +21,20 @@
           >{{butIsConTxt}}</el-button>
         </el-input>
       </el-form-item>
-     <p style="color:red">没有帐号默认注册</p>
-      <el-button type="success" @click="login('loginForm')">登录</el-button>
+<!--     <p style="color:red">没有帐号默认注册</p>-->
+        <el-form-item>
+            <el-button type="success" @click="login('loginForm')">登录</el-button>
+
+            <el-button @click="resetForm('loginForm')">重置</el-button>
+        </el-form-item>
+        <router-link to="register">没有密码？注册</router-link>
+<!--      <el-button type="success" @click="login('loginForm')">登录</el-button>-->
     </el-form>
   </section>
 </template>
 
 <script>
-import { getCaptcha, resUser } from "./../api/index";
+import { getCaptcha } from "./../api/index";
 import { Message } from "element-ui";
 
 export default {
@@ -108,6 +114,10 @@ export default {
       }
       // this.butConTxt = "获取验证码"
     },
+      //重置表单
+      resetForm(formName) {
+          this.$refs[formName].resetFields();
+      },
 
     login(formName) {
       // console.log(this.$store)
@@ -130,25 +140,25 @@ export default {
                     duration: "800"
                   });
                   break;
-                case 501:
-                  resUser(this.loginForm.name, this.loginForm.pas).then(res => {
-                    if (res.data.code == 200) {
-                      this.$store.dispatch("fetchUserInfo");
-                      Message({
-                        msg: res.data.msg,
-                        type: "success",
-                        duration: 800,
-                        onClose: () => {
-                          if (res.data.data.role == 1) {
-                            this.$router.push("/");
-                          } else {
-                            this.$router.push("/admini");
-                          }
-                        }
-                      });
-                    }
-                  });
-                  break;
+                // case 501:
+                //   resUser(this.loginForm.name, this.loginForm.pas).then(res => {
+                //     if (res.data.code == 200) {
+                //       this.$store.dispatch("fetchUserInfo");
+                //       Message({
+                //         msg: res.data.msg,
+                //         type: "success",
+                //         duration: 800,
+                //         onClose: () => {
+                //           if (res.data.data.role == 1) {
+                //             this.$router.push("/");
+                //           } else {
+                //             this.$router.push("/admini");
+                //           }
+                //         }
+                //       });
+                //     }
+                //   });
+                //   break;
                 default:
                   Message({
                     message: data.msg,
@@ -170,7 +180,10 @@ export default {
         }
       });
     }
-  }
+  },
+    // components: {
+    //     register
+    // }
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <section class="list">
-    <Tag v-if="flower.discount">{{flower.discount/10}}折</Tag>
+<!--    <Tag v-if="flower.discount">{{flower.discount/10}}折</Tag>-->
     <el-card :body-style="{ padding: '0px' }" shadow="hover">
       <img 
         :src="imgUrl"
@@ -33,16 +33,16 @@
             <OrderButt :flowerId="flower.flower_id"/>
           </el-col>
         </el-row>
-        <el-rate  disabled :value="flower.star">
+<!--        <el-rate  disabled :value="flower.star">-->
 
-        </el-rate>
+<!--        </el-rate>-->
       </div>
     </el-card>
   </section>
 </template>
 
 <script>
-import Tag from './Tag'
+// import Tag from './Tag'
 import OrderButt from "./OrderButt";
 import {imageUrl} from './../api/bashUrl'
 import { collectflower } from "./../api/index";
@@ -51,7 +51,7 @@ import { Message } from 'element-ui';
 export default {
   name: "flowerlist",
   components: {
-    Tag,
+    // Tag,
     OrderButt
   },
   data() {
