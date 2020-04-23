@@ -83,10 +83,10 @@ export default {
     return {
         collectflowers: null,
         imgArray: [
-            '../timg1.jpg',
-            '../timg2.jpg',
-            '../timg3.jpg',
-            '../timg4.jpg'
+            '../banner/timg1.jpg',
+            '../banner/timg2.jpg',
+            '../banner/timg3.jpg',
+            '../banner/timg4.jpg'
         ],
         timer: null, //定时器
         mark: 0, //比对图片索引的变量
