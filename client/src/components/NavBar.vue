@@ -62,10 +62,10 @@ export default {
           });
           break;
         case "collect":
-          this.$store.commit("setIsShowDraw", "collect");
+          this.$router.push("/collect");
           break;
         case "order":
-          this.$store.commit("setIsShowDraw", "order");
+          this.$router.push("/order");
       }
     }
   },

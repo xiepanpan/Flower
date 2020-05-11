@@ -18,7 +18,7 @@
             <el-form
               :label-position="labelPosition"
               label-width="80px"
-              
+
             >
               <el-form-item label="名称" >
                 <el-input v-model="changeinfo.name" :placeholder="userinfo.name">
@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  
+
 .info, h3 {
   margin: 1vw 0;
 }

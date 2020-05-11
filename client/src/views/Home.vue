@@ -11,7 +11,7 @@
 
          <section id="home">
              <el-container>
-                 <el-header>
+                 <el-header class="bg-purple-dark">
                      <NavBar>花店</NavBar>
                  </el-header>
                  <el-main class="main">
@@ -50,6 +50,44 @@
                  <Collect v-if="isShowDraw=='collect'" />
                  <OrderMu v-if="isShowDraw=='order'"/>
              </el-drawer>
+             <el-footer class="header">
+                 <el-row>
+                     <el-col :span="8">
+                         <div class="grid-content bg-purple-dark">
+                            <dl class="col-md-4">
+                                <dt>客服服务</dt>
+                                <dd>服务声明  常见问题</dd>
+                                <dd>配送范围  安全条约</dd>
+                            </dl>
+                         </div>
+                     </el-col>
+                     <el-col :span="8"><div class="grid-content bg-purple-dark"><dt>热门咨询</dt>
+                         <dd>售后服务   订购演示</dd>
+                         <dd>购物流程   城市那些</dd></div></el-col>
+                     <el-col :span="8">
+                         <div class="grid-content bg-purple-dark">
+                             <dt>联系我们</dt>
+                             <dd>订购热线：908-889-898</dd>
+                             <dd>在线服务</dd>
+                         </div>
+                     </el-col>
+                     <el-col :span="24">
+                         <div class="col-md-7">
+                             <div>
+                                 <!--<h1 style="display: inline-block">学成网</h1>--><img src="/static/img/asset-logoIco.png" alt=""></div>
+                             <div>让天下没有难买的鲜花</div>
+                             <div>© 2020年XTCG Inc.保留所有权利。-辽ICP备15025210号</div>
+                             <input type="button" class="btn btn-primary" value="下 载" />
+                         </div>
+                     </el-col>
+
+                 </el-row>
+
+
+                 <div class="bg-purple-dark">
+
+                 </div>
+             </el-footer>
          </section>
      </div>
 
@@ -215,5 +253,25 @@ img {
 }
 .image-leave {
     transform: translateX(0);
+}
+ .el-row {
+     margin-bottom: 20px;
+     &:last-child {
+         margin-bottom: 0;
+     }
+ }
+.el-col {
+    border-radius: 4px;
+}
+.bg-purple-dark {
+    background: #bbe0e3;
+}
+.grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+}
+.row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
 }
 </style>
