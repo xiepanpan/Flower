@@ -170,25 +170,25 @@ COMMIT;
 -- ----------------------------
 -- Table structure for restaurant
 -- ----------------------------
-DROP TABLE IF EXISTS `restaurant`;
-CREATE TABLE `restaurant` (
-  `restaurant_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `head_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`restaurant_id`) USING BTREE,
-  KEY `user_id` (`user_id`) USING BTREE,
-  CONSTRAINT `restaurant_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
-
--- ----------------------------
--- Records of restaurant
--- ----------------------------
-BEGIN;
-INSERT INTO `restaurant` VALUES (1, NULL, '1', '1', 1, '1');
-COMMIT;
+-- DROP TABLE IF EXISTS `restaurant`;
+-- CREATE TABLE `restaurant` (
+--   `restaurant_id` int(11) NOT NULL AUTO_INCREMENT,
+--   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   `user_id` int(11) DEFAULT NULL,
+--   `head_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   PRIMARY KEY (`restaurant_id`) USING BTREE,
+--   KEY `user_id` (`user_id`) USING BTREE,
+--   CONSTRAINT `restaurant_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+-- ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
+--
+-- -- ----------------------------
+-- -- Records of restaurant
+-- -- ----------------------------
+-- BEGIN;
+-- INSERT INTO `restaurant` VALUES (1, NULL, '1', '1', 1, '1');
+-- COMMIT;
 
 -- ----------------------------
 -- Table structure for user
