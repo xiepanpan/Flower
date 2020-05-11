@@ -16,7 +16,7 @@
            select a.*,b.name type_name from flower as a,flower_type as b where a.flower_id=#{flower_id} and a.flower_type_id=b.flower_type_id
         </select>
         <insert id="collectFlower">
-       insert into collect(user_id,flower_id)values(#{user_id},#{flower_id})
+       insert into collect(creat_date,user_id,flower_id)values(now(),#{user_id},#{flower_id})
         </insert>
         <insert id="buyFlower">
           insert into buy(user_id,flower_id,status)values(#{user_id},#{flower_id},#{status})
